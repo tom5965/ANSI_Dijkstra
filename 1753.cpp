@@ -51,6 +51,10 @@ void dijkstra(int source){
 		int current_node = turn.top().node_number;
 		turn.pop();
 
+		if (nodes[current_node].selected)
+			continue;
+		nodes[current_node].selected = true;
+
 		// 4-2. 선택한 정점이 도착점이 아니라면, 선택한 정점으로부터 주변의 정점의 거리를 갱신한다.
 		int range = edges[current_node].size();
 
