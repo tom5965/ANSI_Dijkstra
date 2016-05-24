@@ -9,7 +9,7 @@ using namespace std;
 
 struct edge{
 	int end_node;	// 변의 끝점
-	int weight;		// 변의 가중치
+	int weight;	// 변의 가중치
 };
 
 struct node{
@@ -34,24 +34,24 @@ priority_queue<element> turn;
 
 void dijkstra(int source){
 
-	// 1. 처음엔 모든 정점의 최단 거리를 '모른다'고 생각합시다.
+	// 1. 처음엔 모든 정점의 최단 거리를 '모른다'고 생각한다.
 	for (int i = 0; i < MAX_NODES; i++){
 		nodes[i].distance = INF;
 		nodes[i].selected = false;
 	}
 
-	// 2. 시작점의 최단 거리를 0으로 설정합시다.
+	// 2. 시작점의 최단 거리를 0으로 설정한다.
 	nodes[source].distance = 0;
 	turn.push({ source, 0 });
 
-	// PQ가 비워질때까지 반복합니다.
+	// PQ가 비워질때까지 반복한다.
 	while (!turn.empty()){
 
-		// 3. '아직 선택하지 않았고, 거리를 알고 있는 정점' 중 거리가 가장 짧은 정점을 선택합니다.
+		// 3. '아직 선택하지 않았고, 거리를 알고 있는 정점' 중 거리가 가장 짧은 정점을 선택한다.
 		int current_node = turn.top().node_number;
 		turn.pop();
 
-		// 4-2. 선택한 정점이 도착점이 아니라면, 서낵한 정점으로부터 주변의 정점의 거리를 갱신합니다.
+		// 4-2. 선택한 정점이 도착점이 아니라면, 서낵한 정점으로부터 주변의 정점의 거리를 갱신한다.
 		int range = edges[current_node].size();
 
 		for (int i = 0; i < range; i++){
